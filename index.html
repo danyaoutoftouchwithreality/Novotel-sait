@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
 
 <!-- ===================== NAV ===================== -->
 <header class="nav">
@@ -32,7 +33,7 @@
     </nav>
     <div class="nav-cta">
       <div class="nav-phone">8 (800) 775-12-87<span>звонок бесплатный</span></div>
-      <a class="btn btn-primary" href="#contacts">Связаться
+      <a class="btn btn-primary" href="#consult">Связаться
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <button class="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
@@ -48,7 +49,7 @@
   <div class="phones">8 (495) 775-12-87 · 8 (800) 775-12-87</div>
 </div>
 
-<main>
+<main id="main">
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="hero-bg"><div class="hero-grid-lines"></div></div>
@@ -60,7 +61,7 @@
       <a class="btn btn-primary btn-lg" href="#services">Смотреть услуги
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a class="btn btn-ghost btn-lg" href="#contacts">Получить консультацию</a>
+      <a class="btn btn-ghost btn-lg" href="#consult">Получить консультацию</a>
     </div>
     <div class="hero-trust" data-reveal data-delay="4">
       <div class="t"><span class="num">29</span><span class="lbl">лет на рынке связи</span></div>
@@ -167,6 +168,40 @@
   </div>
 </section>
 
+<!-- ===================== PATH SELECTION ===================== -->
+<section class="section" id="start" style="background:var(--bg-soft)">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">С чего начать</span>
+      <h2 class="h2" style="margin-top:16px">Выберите свой путь</h2>
+      <p class="lead">Кто бы вы ни были — мы найдём общий язык. Выберите, что ближе вам, и мы расскажем главное именно для вас.</p>
+    </div>
+    <div class="paths">
+      <article class="path-card" data-reveal>
+        <div class="num">01</div>
+        <div class="who">Новичкам</div>
+        <div class="head">Приятно познакомиться!</div>
+        <p>«НОВАТЕЛ» — один из самых стабильных и надёжных малых операторов связи России, работающий на рынке с января 1997 года. С нами уже много лет сотрудничают самые крупные операторы связи России. Вы ничем не рискуете, начиная своё сотрудничество с нами!</p>
+        <div class="more"><a class="link-arrow" href="#consult">Начать сотрудничество <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </article>
+      <article class="path-card" data-reveal data-delay="1">
+        <div class="num">02</div>
+        <div class="who">Бывалым</div>
+        <div class="head">Здравый взгляд на знакомые вещи</div>
+        <p>Чтобы оценить что-либо, это что-либо нужно проверить на деле. У операторов однотипное оборудование и одни и те же поставщики, а качество никогда не стоило и не будет стоить дёшево. Нас отличают порядочность, открытость и искренность, которыми никто из конкурентов похвастаться не сможет.</p>
+        <div class="more"><a class="link-arrow" href="#consult">Проверить на деле <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </article>
+      <article class="path-card" data-reveal data-delay="2">
+        <div class="num">03</div>
+        <div class="who">Сомневающимся</div>
+        <div class="head">Единственный способ поверить — проверить</div>
+        <p>Сомнение всегда есть там, где нет полной уверенности в чём-либо. Мы с честью прошли испытание экономическим кризисом в августе 1998 года и не покупаем репутацию низкими тарифами. Протестируйте услуги сразу у нескольких поставщиков — если среди них будет «НОВАТЕЛ», вы вряд ли проиграете.</p>
+        <div class="more"><a class="link-arrow" href="#consult">Убедиться самим <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== STATS ===================== -->
 <section class="section--tight stats-band">
   <div class="container">
@@ -252,18 +287,60 @@
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="section--tight">
-  <div class="container">
-    <div class="cta" data-reveal>
-      <span class="eyebrow" style="color:#bfe09d">Остались вопросы?</span>
-      <h2 class="h2" style="margin-top:16px">Позвоните нам — подскажем оптимальное решение</h2>
-      <p>Если у вас остались или появились новые вопросы по нашим услугам, позвоните нам — мы обязательно ответим и подскажем оптимальный вариант подключения и использования.</p>
-      <div class="cta-phone">8 800 775 12 87</div>
-      <div class="cta-actions">
-        <a class="btn btn-light btn-lg" href="tel:+78007751287">Позвонить бесплатно</a>
-        <a class="btn btn-light btn-lg" href="mailto:info@novatel.ru">Написать нам</a>
-      </div>
+<!-- ===================== CONSULT FORM ===================== -->
+<section class="section" id="consult">
+  <div class="container consult">
+    <div class="consult-aside" data-reveal>
+      <span class="eyebrow">Получить консультацию</span>
+      <h2 class="h2" style="margin-top:16px">Подскажем оптимальное решение</h2>
+      <p class="lead" style="margin-top:18px">Оставьте заявку — мы перезвоним, ответим на вопросы и предложим оптимальный вариант подключения. Или позвоните прямо сейчас: <strong style="color:var(--ink)">8&nbsp;800&nbsp;775&nbsp;12&nbsp;87</strong>.</p>
+      <ul class="reassure">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Реагируем оперативно — не создаём видимость идеальности.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>29 лет на рынке связи, с нами сотрудничают крупнейшие операторы.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Вы ничем не рискуете, начиная сотрудничество с нами.</li>
+      </ul>
+    </div>
+    <div class="form-card" data-reveal data-delay="1">
+      <form id="lead-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="lf-name">Имя <span class="req">*</span></label>
+            <input id="lf-name" name="name" type="text" placeholder="Как к вам обращаться" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="lf-phone">Телефон <span class="req">*</span></label>
+            <input id="lf-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="lf-email">E-mail</label>
+          <input id="lf-email" name="email" type="email" placeholder="you@company.ru" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="lf-service">Интересующая услуга</label>
+          <select id="lf-service" name="service">
+            <option value="">Выберите услугу…</option>
+            <option>Номер 8-800</option>
+            <option>IP-телефония</option>
+            <option>Виртуальный / многоканальный номер</option>
+            <option>Междугородная и международная связь</option>
+            <option>Телефонизация офиса</option>
+            <option>Телеконференции</option>
+            <option>Хостинг</option>
+            <option>ИТ-аутсорсинг</option>
+            <option>Другое / не определился</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="lf-msg">Сообщение</label>
+          <textarea id="lf-msg" name="message" placeholder="Коротко опишите вашу задачу"></textarea>
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit">Отправить заявку
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-status" id="lf-status" role="status"></p>
+        <p class="form-note">Нажимая «Отправить заявку», вы соглашаетесь на обработку персональных данных. Информация на сайте не является публичной офертой.</p>
+      </form>
     </div>
   </div>
 </section>

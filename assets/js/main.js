@@ -47,6 +47,46 @@
     reveals.forEach((el) => io.observe(el));
   }
 
+  // Lead form — compose mailto (no backend required; swap action for a real endpoint later)
+  const form = document.getElementById("lead-form");
+  if (form) {
+    const status = document.getElementById("lf-status");
+    const $ = (id) => document.getElementById(id);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = $("lf-name").value.trim();
+      const phone = $("lf-phone").value.trim();
+      const email = $("lf-email").value.trim();
+      const service = $("lf-service").value;
+      const message = $("lf-msg").value.trim();
+      if (!name || !phone) {
+        (!name ? $("lf-name") : $("lf-phone")).focus();
+        status.className = "form-status";
+        status.style.display = "block";
+        status.style.background = "rgba(255,128,64,.12)";
+        status.style.color = "#c2410c";
+        status.textContent = "Пожалуйста, укажите имя и телефон.";
+        return;
+      }
+      const lines = [
+        "Имя: " + name,
+        "Телефон: " + phone,
+        email ? "E-mail: " + email : null,
+        service ? "Услуга: " + service : null,
+        message ? "Сообщение: " + message : null,
+      ].filter(Boolean);
+      const href =
+        "mailto:info@novatel.ru?subject=" +
+        encodeURIComponent("Заявка с сайта — " + name) +
+        "&body=" +
+        encodeURIComponent(lines.join("\n"));
+      window.location.href = href;
+      status.className = "form-status ok";
+      status.textContent = "Спасибо! Открываем почтовый клиент для отправки заявки. Если он не открылся — позвоните 8 800 775-12-87.";
+      form.reset();
+    });
+  }
+
   // Count-up for stats
   const counters = document.querySelectorAll("[data-count]");
   if (counters.length && "IntersectionObserver" in window && !reduce) {

@@ -404,12 +404,85 @@ h1,h2,h3,h4 { line-height: 1.08; letter-spacing: -0.022em; font-weight: 700; col
 .num-tag { display:inline-block; padding: 4px 12px; border-radius: 8px; background: rgba(75,138,193,.1); color: var(--brand-deep); font-weight:700; margin: 3px 4px 3px 0; }
 
 /* ============================================================
+   ACCESSIBILITY — skip link & focus
+   ============================================================ */
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 200;
+  background: var(--brand-deep); color: #fff; padding: 12px 20px; border-radius: var(--r-full);
+  font-weight: 600; box-shadow: var(--shadow-md); transition: top .25s var(--ease);
+}
+.skip-link:focus { top: 14px; }
+:focus-visible {
+  outline: 3px solid var(--brand-blue-2);
+  outline-offset: 3px; border-radius: 6px;
+}
+.btn:focus-visible { outline-offset: 4px; }
+.nav a:focus-visible, .footer a:focus-visible { outline-offset: 2px; }
+
+/* ============================================================
+   PATH SELECTION — Новичкам / Бывалым / Сомневающимся
+   ============================================================ */
+.paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.path-card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--white); border-radius: var(--r-lg); padding: 34px 30px 30px;
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-soft);
+  overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.path-card::after {
+  content:""; position:absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(90deg, var(--brand-green-2), var(--brand-blue-2), var(--brand-deep));
+  transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease);
+}
+.path-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line); }
+.path-card:hover::after { transform: scaleX(1); }
+.path-card .num { font-size: .82rem; font-weight: 700; letter-spacing: .12em; color: var(--brand-green); margin-bottom: 14px; }
+.path-card .who { font-size: 1.4rem; font-weight: 800; letter-spacing: -.02em; color: var(--ink); margin-bottom: 6px; }
+.path-card .head { font-size: .9rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--brand-blue); margin-bottom: 14px; }
+.path-card p { color: var(--text-soft); font-size: .98rem; line-height: 1.6; flex: 1; }
+.path-card .more { margin-top: 20px; }
+
+/* ============================================================
+   CONSULT FORM
+   ============================================================ */
+.consult { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+.consult-aside .quote { margin-top: 18px; }
+.consult-aside .reassure { margin-top: 22px; display:grid; gap: 14px; }
+.consult-aside .reassure li { display:flex; gap: 12px; align-items:flex-start; color: var(--text-soft); font-size: .98rem; }
+.consult-aside .reassure svg { flex-shrink:0; width: 20px; height: 20px; color: var(--brand-green); margin-top: 2px; }
+.form-card {
+  background: var(--white); border-radius: var(--r-xl); padding: clamp(26px, 4vw, 40px);
+  box-shadow: var(--shadow-lg), inset 0 0 0 1px var(--line-soft);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.field label { font-size: .85rem; font-weight: 600; color: var(--slate-700); }
+.field label .req { color: var(--brand-orange); }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: .98rem; color: var(--ink);
+  padding: 13px 15px; border-radius: var(--r-sm); background: var(--slate-50);
+  border: 1px solid var(--line); transition: border-color .2s, box-shadow .2s, background .2s;
+  width: 100%;
+}
+.field textarea { resize: vertical; min-height: 96px; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--brand-blue-2); background: #fff;
+  box-shadow: 0 0 0 4px rgba(75,138,193,.14);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--slate-400); }
+.form-card .btn { width: 100%; margin-top: 4px; }
+.form-note { font-size: .82rem; color: var(--text-soft); margin-top: 14px; text-align: center; line-height: 1.5; }
+.form-status { font-size: .95rem; font-weight: 600; margin-top: 14px; padding: 12px 16px; border-radius: var(--r-sm); display: none; }
+.form-status.ok { display:block; background: rgba(140,197,102,.14); color: #3f7a1f; }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1000px) {
   .stats-grid { grid-template-columns: repeat(2,1fr); gap: 32px 24px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .split { grid-template-columns: 1fr; }
+  .split, .consult { grid-template-columns: 1fr; }
+  .paths { grid-template-columns: 1fr; }
   .news-grid { grid-template-columns: repeat(2,1fr); }
   .card.col-3, .card.col-4, .card--feature { grid-column: span 6; }
   .card.col-2 { grid-column: span 3; }
@@ -431,6 +504,7 @@ h1,h2,h3,h4 { line-height: 1.08; letter-spacing: -0.022em; font-weight: 700; col
   .bento { grid-template-columns: repeat(2,1fr); }
   .card.col-2, .card.col-3, .card.col-4, .card--feature, .card.col-6 { grid-column: span 2; }
   .news-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; gap: 28px; }
   .timeline::before { left: 7px; }
