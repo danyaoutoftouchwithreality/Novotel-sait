@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "novatel",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "-e",
+        "\nconst http=require(\"http\"),fs=require(\"fs\"),path=require(\"path\");\nconst ROOT=process.env.NV_ROOT;\nconst MIME={\".html\":\"text/html; charset=utf-8\",\".css\":\"text/css; charset=utf-8\",\".js\":\"application/javascript; charset=utf-8\",\".svg\":\"image/svg+xml\",\".png\":\"image/png\",\".gif\":\"image/gif\",\".jpg\":\"image/jpeg\",\".ico\":\"image/x-icon\"};\nhttp.createServer((req,res)=>{\n  let p=decodeURIComponent(req.url.split(\"?\")[0]);\n  if(p.endsWith(\"/\"))p+=\"index.html\";\n  let fp=path.join(ROOT,p);\n  fs.readFile(fp,(e,d)=>{\n    if(e){res.writeHead(404);res.end(\"404\");return;}\n    res.writeHead(200,{\"Content-Type\":MIME[path.extname(fp).toLowerCase()]||\"application/octet-stream\"});\n    res.end(d);\n  });\n}).listen(4521,\"127.0.0.1\",()=>console.log(\"serving\",ROOT,\"on 4521\"));\n"
+      ],
+      "env": {
+        "NV_ROOT": "/Users/dolly/Desktop/vibe coding/office/папа/novatel-сайт"
+      },
+      "port": 4521
+    }
+  ]
+}
