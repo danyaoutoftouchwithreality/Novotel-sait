@@ -404,6 +404,83 @@ h1,h2,h3,h4 { line-height: 1.08; letter-spacing: -0.022em; font-weight: 700; col
 .num-tag { display:inline-block; padding: 4px 12px; border-radius: 8px; background: rgba(75,138,193,.1); color: var(--brand-deep); font-weight:700; margin: 3px 4px 3px 0; }
 
 /* ============================================================
+   PAGE TRANSITIONS — «эффект Stripe» (MPA)
+   ============================================================ */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: vt-out .26s var(--ease) both; }
+  ::view-transition-new(root) { animation: vt-in .42s var(--ease) both; }
+  @keyframes vt-out { to { opacity: 0; } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  /* JS-fallback для браузеров без View Transitions */
+  html.leaving body { opacity: 0; transition: opacity .18s var(--ease); }
+}
+
+/* ============================================================
+   NAV — active state
+   ============================================================ */
+.nav-links a.active { color: var(--brand-deep); font-weight: 600; background: var(--slate-100); }
+.nav.scrolled .nav-links a.active { background: rgba(33,64,126,.07); }
+.mobile-menu a.active { color: var(--brand-blue); }
+
+/* ============================================================
+   PAGE HEADER (внутренние страницы)
+   ============================================================ */
+.page-hero { position: relative; padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 80px)); padding-bottom: clamp(28px, 4vw, 48px); overflow: hidden; }
+.page-hero::before {
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(40% 60% at 88% -10%, rgba(140,197,102,.16), transparent 70%),
+    radial-gradient(46% 60% at 4% -10%, rgba(75,138,193,.14), transparent 70%);
+}
+.page-hero .subnav { margin-bottom: 20px; }
+.page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -.035em; }
+.page-hero .lead { margin-top: 20px; max-width: 680px; }
+
+/* ============================================================
+   FAQ — аккордеон (нативный details)
+   ============================================================ */
+.faq { display: grid; gap: 12px; max-width: 860px; margin-inline: auto; }
+.faq details { background: var(--white); border-radius: var(--r-md); box-shadow: inset 0 0 0 1px var(--line-soft); overflow: hidden; transition: box-shadow .3s var(--ease); }
+.faq details[open] { box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 21px 26px; font-weight: 700; font-size: 1.08rem; color: var(--ink); display: flex; justify-content: space-between; gap: 18px; align-items: center; transition: color .2s; }
+.faq summary:hover { color: var(--brand-blue); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ic { flex-shrink: 0; width: 22px; height: 22px; color: var(--brand-blue); transition: transform .3s var(--ease); }
+.faq details[open] summary .ic { transform: rotate(135deg); }
+.faq .ans { padding: 0 26px 24px; color: var(--slate-700); line-height: 1.72; font-size: 1.02rem; }
+.faq .ans > * + * { margin-top: .9em; }
+.faq .ans strong { color: var(--ink); }
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+.price-card {
+  position: relative; background: var(--white); border-radius: var(--r-lg); padding: 32px 30px;
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-soft); display: flex; flex-direction: column;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line); }
+.price-card .plan { font-weight: 700; font-size: 1.18rem; color: var(--ink); letter-spacing: -.01em; }
+.price-card .amount { font-size: clamp(1.9rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -.03em; color: var(--brand-deep); margin-top: 14px; font-variant-numeric: tabular-nums; }
+.price-card .amount small { font-size: .9rem; font-weight: 600; color: var(--text-soft); letter-spacing: 0; }
+.price-card .plist { display: grid; gap: 11px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line-soft); flex: 1; }
+.price-card .plist li { position: relative; padding-left: 26px; color: var(--slate-700); font-size: .97rem; }
+.price-card .plist li::before { content:""; position:absolute; left:2px; top:.55em; width:8px; height:8px; border-radius:50%; background: linear-gradient(135deg, var(--brand-green-2), var(--brand-blue-2)); }
+.price-card .more { margin-top: 22px; }
+.price-card.feature {
+  color: #eaf0fb;
+  background: radial-gradient(70% 110% at 100% 0%, rgba(140,197,102,.28), transparent 60%), linear-gradient(135deg, var(--ink), var(--brand-deep) 130%);
+  box-shadow: var(--shadow-lg);
+}
+.price-card.feature .plan, .price-card.feature .amount { color: #fff; }
+.price-card.feature .amount small, .price-card.feature .plist li { color: rgba(234,240,251,.82); }
+.price-card.feature .plist { border-top-color: rgba(255,255,255,.14); }
+.price-badge { position: absolute; top: 20px; right: 20px; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-deep); background: rgba(255,255,255,.85); padding: 5px 11px; border-radius: var(--r-full); }
+.price-note { font-size: .95rem; color: var(--text-soft); max-width: 760px; margin-top: 8px; }
+
+/* ============================================================
    ACCESSIBILITY — skip link & focus
    ============================================================ */
 .skip-link {
@@ -483,6 +560,7 @@ h1,h2,h3,h4 { line-height: 1.08; letter-spacing: -0.022em; font-weight: 700; col
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   .split, .consult { grid-template-columns: 1fr; }
   .paths { grid-template-columns: 1fr; }
+  .price-grid { grid-template-columns: 1fr; }
   .news-grid { grid-template-columns: repeat(2,1fr); }
   .card.col-3, .card.col-4, .card--feature { grid-column: span 6; }
   .card.col-2 { grid-column: span 3; }

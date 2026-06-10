@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Sticky nav background on scroll
   const nav = document.querySelector(".nav");
   const onScroll = () => {
@@ -27,10 +29,29 @@
     );
   }
 
+  // Smooth page transitions — fallback for browsers without MPA View Transitions
+  const supportsVT = "startViewTransition" in document;
+  if (!reduceMotion && !supportsVT) {
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href || a.target === "_blank" || a.hasAttribute("download")) return;
+      if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      let url;
+      try { url = new URL(href, location.href); } catch (_) { return; }
+      if (url.origin !== location.origin || url.pathname === location.pathname) return;
+      e.preventDefault();
+      document.documentElement.classList.add("leaving");
+      setTimeout(() => { location.href = url.href; }, 165);
+    });
+    window.addEventListener("pageshow", () => document.documentElement.classList.remove("leaving"));
+  }
+
   // Reveal on scroll
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const reveals = document.querySelectorAll("[data-reveal]");
-  if (reduce || !("IntersectionObserver" in window)) {
+  if (reduceMotion || !("IntersectionObserver" in window)) {
     reveals.forEach((el) => el.classList.add("in"));
   } else {
     const io = new IntersectionObserver(
@@ -89,7 +110,7 @@
 
   // Count-up for stats
   const counters = document.querySelectorAll("[data-count]");
-  if (counters.length && "IntersectionObserver" in window && !reduce) {
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
     const cio = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
