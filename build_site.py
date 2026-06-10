@@ -28,8 +28,8 @@ def head(prefix, title, desc):
 <meta name="description" content="{desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet">
-<link rel="icon" href="{prefix}assets/img/mark.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet">
+<link rel="icon" href="{prefix}assets/img/mark.png" type="image/png">
 <link rel="stylesheet" href="{prefix}assets/css/styles.css">
 </head>
 <body>
@@ -47,9 +47,8 @@ def nav(prefix, active):
     return f'''
 <header class="nav">
   <div class="container">
-    <a class="brand" href="{prefix}index.html" aria-label="НОВАТЕЛ — на главную">
-      <img src="{prefix}assets/img/mark.svg" alt="">
-      <span class="brand-word"><span class="brand-name">НОВАТЕЛ</span><span class="brand-tag">стабильная альтернатива</span></span>
+    <a class="brand" href="{prefix}index.html" aria-label="НОВАТЕЛ — стабильная альтернатива">
+      <img class="brand-logo" src="{prefix}assets/img/logo.png" alt="НОВАТЕЛ — стабильная альтернатива" width="196" height="88">
     </a>
     <nav class="nav-links" aria-label="Основная навигация">{links}
     </nav>
@@ -73,7 +72,7 @@ def footer(prefix):
     <div class="footer-top">
       <div>
         <a class="brand" href="{prefix}index.html">
-          <img src="{prefix}assets/img/mark.svg" alt="" style="width:40px;height:40px">
+          <img class="brand-mark" src="{prefix}assets/img/mark.png" alt="" width="66" height="48">
           <span class="brand-word"><span class="brand-name">НОВАТЕЛ</span><span class="brand-tag">стабильная альтернатива</span></span>
         </a>
         <p class="footer-about">Телекоммуникационная компания. 29 лет помогаем клиентам — крупному и малому бизнесу, индивидуальным предпринимателям.</p>
@@ -260,7 +259,17 @@ def bento(prefix):
 # ============================================================
 def home_body():
     return f'''<section class="hero">
-  <div class="hero-bg"><div class="hero-grid-lines"></div></div>
+  <div class="hero-bg">
+    <div class="hero-grid-lines"></div>
+    <svg class="hero-motif" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="70" cy="58" r="38" fill="#4F7A57" opacity=".9"/>
+      <circle cx="132" cy="52" r="27" fill="#6E9A74" opacity=".85"/>
+      <circle cx="140" cy="112" r="32" fill="#4F7A57" opacity=".9"/>
+      <circle cx="84" cy="120" r="25" fill="#1F4E8C" opacity=".9"/>
+      <circle cx="116" cy="84" r="21" fill="#163A6B" opacity=".95"/>
+      <circle cx="52" cy="106" r="16" fill="#8FB6DA" opacity=".85"/>
+    </svg>
+  </div>
   <div class="container hero-inner">
     <span class="pill" data-reveal><span class="dot"></span>Телекоммуникационная компания · с 1997 года</span>
     <h1 class="display" data-reveal data-delay="1">Стабильная<br><span class="grad">альтернатива</span> связи</h1>
@@ -351,13 +360,13 @@ def home_body():
 <section class="section--tight">
   <div class="container">
     <div class="cta" data-reveal>
-      <span class="eyebrow" style="color:#bfe09d">Начнём сотрудничество</span>
+      <span class="eyebrow">Начнём сотрудничество</span>
       <h2 class="h2" style="margin-top:16px">Подскажем оптимальное решение для вашего бизнеса</h2>
       <p>Позвоните нам — мы обязательно ответим на ваши вопросы и предложим оптимальный вариант подключения и использования.</p>
       <div class="cta-phone">8 800 775 12 87</div>
       <div class="cta-actions">
-        <a class="btn btn-light btn-lg" href="kontakty.html">Оставить заявку</a>
-        <a class="btn btn-light btn-lg" href="tarify.html">Смотреть тарифы</a>
+        <a class="btn btn-primary btn-lg" href="kontakty.html">Оставить заявку</a>
+        <a class="btn btn-ghost btn-lg" href="tarify.html">Смотреть тарифы</a>
       </div>
     </div>
   </div>
@@ -393,8 +402,8 @@ def vozmozhnosti_body():
       <h2 class="h2" style="margin-top:0">Не знаете, что подойдёт именно вам?</h2>
       <p>Позвоните — подскажем оптимальный вариант под вашу задачу.</p>
       <div class="cta-actions">
-        <a class="btn btn-light btn-lg" href="kontakty.html">Получить консультацию</a>
-        <a class="btn btn-light btn-lg" href="voprosy.html">Частые вопросы</a>
+        <a class="btn btn-primary btn-lg" href="kontakty.html">Получить консультацию</a>
+        <a class="btn btn-ghost btn-lg" href="voprosy.html">Частые вопросы</a>
       </div>
     </div>
   </div>
@@ -433,7 +442,7 @@ def tarify_body():
           <li>Подключение — 0 ₽</li>
           <li>Оптимально для активного входящего потока</li>
         </ul>
-        <div class="more"><a class="link-arrow" href="kontakty.html" style="color:#bfe09d">Подключить {ARROW}</a></div>
+        <div class="more"><a class="link-arrow" href="kontakty.html">Подключить {ARROW}</a></div>
       </article>
       <article class="price-card" data-reveal data-delay="2">
         <div class="plan">Безлимит</div>
@@ -468,7 +477,7 @@ def tarify_body():
         <li>Без гудка «занято»</li>
         <li>Масштабирование до 32 каналов</li>
       </ul>
-      <div class="more"><a class="link-arrow" href="kontakty.html" style="color:#bfe09d">Подключить {ARROW}</a></div>
+      <div class="more"><a class="link-arrow" href="kontakty.html">Подключить {ARROW}</a></div>
     </aside>
   </div>
 </section>
