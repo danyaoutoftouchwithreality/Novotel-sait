@@ -185,6 +185,18 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 }
 .hero-motif { position:absolute; top:9%; right:3%; width:min(320px,30vw); opacity:.92; pointer-events:none; z-index:-1; }
 @media (max-width:900px){ .hero-motif{ opacity:.15; right:-8%; top:auto; bottom:2%; } }
+
+/* Hero c глобусом (центрированный) */
+.hero--center { display:flex; align-items:center; text-align:center; min-height:min(90vh,780px); padding-top: calc(var(--nav-h) + clamp(24px,5vw,56px)); padding-bottom: clamp(40px,6vw,80px); }
+.hero--center .hero-bg { z-index:0; }
+.hero-globe { position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+.hero-glow { position:absolute; inset:0; z-index:1; pointer-events:none;
+  background: radial-gradient(ellipse 54% 48% at 50% 43%, rgba(255,255,255,.9), rgba(255,255,255,.42) 46%, rgba(255,255,255,0) 70%); }
+.hero--center .hero-inner { position:relative; z-index:2; max-width:840px; margin-inline:auto; }
+.hero--center .pill { margin-inline:auto; }
+.hero--center .lead { margin-inline:auto; }
+.hero--center .hero-actions { justify-content:center; }
+.hero--center .hero-trust { justify-content:center; }
 .hero-grid-lines { position:absolute; inset:0; background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(circle at 50% 25%, #000, transparent 75%); -webkit-mask-image: radial-gradient(circle at 50% 25%, #000, transparent 75%); }
 .hero-inner { max-width: 880px; }
 .hero .display { margin-top: 26px; }

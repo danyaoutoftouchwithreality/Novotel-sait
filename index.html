@@ -44,21 +44,14 @@
 </div>
 
 <main id="main">
-<section class="hero">
+<section class="hero hero--center">
   <div class="hero-bg">
-    <div class="hero-grid-lines"></div>
-    <svg class="hero-motif" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="70" cy="58" r="38" fill="#4F7A57" opacity=".9"/>
-      <circle cx="132" cy="52" r="27" fill="#6E9A74" opacity=".85"/>
-      <circle cx="140" cy="112" r="32" fill="#4F7A57" opacity=".9"/>
-      <circle cx="84" cy="120" r="25" fill="#1F4E8C" opacity=".9"/>
-      <circle cx="116" cy="84" r="21" fill="#163A6B" opacity=".95"/>
-      <circle cx="52" cy="106" r="16" fill="#8FB6DA" opacity=".85"/>
-    </svg>
+    <canvas class="hero-globe" id="hero-globe" aria-hidden="true"></canvas>
+    <div class="hero-glow"></div>
   </div>
   <div class="container hero-inner">
     <span class="pill" data-reveal><span class="dot"></span>Телекоммуникационная компания · с 1997 года</span>
-    <h1 class="display" data-reveal data-delay="1">Стабильная<br><span class="grad">альтернатива</span> связи</h1>
+    <h1 class="display" data-reveal data-delay="1">Стабильная <span class="grad">альтернатива</span> связи</h1>
     <p class="lead" data-reveal data-delay="2">29 лет помогаем клиентам. Номера 8-800, IP-телефония, виртуальные и многоканальные номера, телефонизация офисов, междугородная и международная связь — для крупного и малого бизнеса.</p>
     <div class="hero-actions" data-reveal data-delay="3">
       <a class="btn btn-primary btn-lg" href="vozmozhnosti.html">Смотреть возможности <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -73,6 +66,7 @@
     </div>
   </div>
 </section>
+<script src="assets/js/globe.js" defer></script>
 
 <section class="partners">
   <div class="container">
