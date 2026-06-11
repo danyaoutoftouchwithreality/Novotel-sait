@@ -1,6 +1,6 @@
 /* ============================================================
    НОВАТЕЛ — design system
-   Brand: #3E6FA8 (blue) · #6E9A74 (green) · #B06A3C (orange)
+   Brand: #3E6FA8 (blue) · #8FB6DA (green) · #B06A3C (orange)
    Direction: handhold.io + Linear + Apple — trust, premium, B2B
    ============================================================ */
 
@@ -10,8 +10,8 @@
   --brand-blue-2: #3E6FA8;
   --brand-deep:   #163A6B;
   --brand-sky:    #8FB6DA;
-  --brand-green:  #4F7A57;
-  --brand-green-2:#6E9A74;
+  --brand-green:  #3E6FA8;
+  --brand-green-2:#8FB6DA;
   --brand-orange: #B06A3C;
   --brand-gold:   #C2854A;
 
@@ -181,7 +181,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .hero-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .hero-bg::before {
   content:""; position:absolute; inset:0;
-  background: radial-gradient(38% 46% at 90% 2%, rgba(110,154,116,.10), transparent 72%);
+  background: radial-gradient(38% 46% at 90% 2%, rgba(143,182,218,.10), transparent 72%);
 }
 .hero-motif { position:absolute; top:9%; right:3%; width:min(320px,30vw); opacity:.92; pointer-events:none; z-index:-1; }
 @media (max-width:900px){ .hero-motif{ opacity:.15; right:-8%; top:auto; bottom:2%; } }
@@ -189,9 +189,10 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 /* Hero c глобусом (центрированный) */
 .hero--center { display:flex; align-items:center; text-align:center; min-height:min(90vh,780px); padding-top: calc(var(--nav-h) + clamp(24px,5vw,56px)); padding-bottom: clamp(40px,6vw,80px); }
 .hero--center .hero-bg { z-index:0; }
-.hero-globe { position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+.hero-globe { position:absolute; left:50%; top:47%; transform:translate(-50%,-50%); width:min(720px,82vw); height:min(720px,82vw); z-index:0; pointer-events:none; }
+@media (max-width:620px){ .hero-globe{ width:min(540px,96vw); height:min(540px,96vw); top:44%; } }
 .hero-glow { position:absolute; inset:0; z-index:1; pointer-events:none;
-  background: radial-gradient(ellipse 54% 48% at 50% 43%, rgba(255,255,255,.9), rgba(255,255,255,.42) 46%, rgba(255,255,255,0) 70%); }
+  background: radial-gradient(ellipse 60% 62% at 50% 47%, rgba(255,255,255,.94), rgba(255,255,255,.62) 42%, rgba(255,255,255,0) 74%); }
 .hero--center .hero-inner { position:relative; z-index:2; max-width:840px; margin-inline:auto; }
 .hero--center .pill { margin-inline:auto; }
 .hero--center .lead { margin-inline:auto; }
@@ -214,7 +215,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
   background: var(--white); box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-soft);
   font-size: .85rem; font-weight: 600; color: var(--slate-700);
 }
-.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-green); box-shadow: 0 0 0 4px rgba(110,154,116,.22); }
+.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-green); box-shadow: 0 0 0 4px rgba(143,182,218,.22); }
 
 /* ---------- Logo ticker / partners ---------- */
 .partners { padding-block: clamp(40px, 6vw, 64px); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); background: var(--bg-soft); }
@@ -237,7 +238,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line); }
 .card .ico {
   width: 50px; height: 50px; border-radius: 14px; display:grid; place-items:center; margin-bottom: 20px;
-  background: linear-gradient(135deg, rgba(62,111,168,.12), rgba(110,154,116,.12));
+  background: linear-gradient(135deg, rgba(62,111,168,.12), rgba(143,182,218,.12));
   color: var(--brand-blue);
 }
 .card .ico svg { width: 26px; height: 26px; }
@@ -253,7 +254,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .card--feature {
   grid-column: span 4; color: var(--text); padding: 40px;
   background:
-    radial-gradient(80% 120% at 100% 0%, rgba(110,154,116,.16), transparent 60%),
+    radial-gradient(80% 120% at 100% 0%, rgba(143,182,218,.16), transparent 60%),
     linear-gradient(150deg, #EAF2FB 0%, #ffffff 70%);
   box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-soft);
 }
@@ -268,7 +269,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
    STATS
    ============================================================ */
 .stats-band { background: var(--bg-soft); color: var(--text); position: relative; overflow: hidden; border-block: 1px solid var(--line-soft); }
-.stats-band::before { content:""; position:absolute; inset:0; background: radial-gradient(46% 70% at 88% 6%, rgba(110,154,116,.10), transparent 64%); }
+.stats-band::before { content:""; position:absolute; inset:0; background: radial-gradient(46% 70% at 88% 6%, rgba(143,182,218,.10), transparent 64%); }
 .stats-grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .stat { padding: 6px 0; }
 .stat .n { font-family: var(--font-mono); font-size: clamp(2.2rem, 4.2vw, 3.1rem); font-weight: 600; letter-spacing: -.03em; color: var(--brand-blue); font-variant-numeric: tabular-nums; }
@@ -315,7 +316,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .feature-list li { display: flex; gap: 16px; align-items: flex-start; }
 .feature-list .fi {
   flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px; display:grid; place-items:center;
-  background: linear-gradient(135deg, rgba(110,154,116,.18), rgba(62,111,168,.15)); color: var(--brand-green);
+  background: linear-gradient(135deg, rgba(143,182,218,.18), rgba(62,111,168,.15)); color: var(--brand-green);
 }
 .feature-list .fi svg { width: 20px; height: 20px; }
 .feature-list h4 { font-size: 1.08rem; margin-bottom: 3px; }
@@ -326,7 +327,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
   border-radius: var(--r-xl); padding: clamp(28px, 4vw, 44px);
   box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line-soft); position: relative; overflow: hidden;
 }
-.glass-panel::before { content:""; position:absolute; top:-40%; right:-30%; width: 70%; height: 90%; background: radial-gradient(circle, rgba(110,154,116,.18), transparent 70%); }
+.glass-panel::before { content:""; position:absolute; top:-40%; right:-30%; width: 70%; height: 90%; background: radial-gradient(circle, rgba(143,182,218,.18), transparent 70%); }
 .quote { font-size: clamp(1.2rem, 1.9vw, 1.55rem); font-weight: 600; line-height: 1.35; color: var(--ink); letter-spacing: -.02em; }
 .quote-mark { font-size: 3.4rem; line-height: .6; color: var(--brand-green-2); font-weight: 800; }
 .quote-cite { margin-top: 22px; color: var(--text-soft); font-weight: 600; }
@@ -337,7 +338,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .cta {
   border-radius: var(--r-xl); padding: clamp(40px, 6vw, 72px); position: relative; overflow: hidden; text-align:center;
   background:
-    radial-gradient(60% 100% at 82% 0%, rgba(110,154,116,.16), transparent 60%),
+    radial-gradient(60% 100% at 82% 0%, rgba(143,182,218,.16), transparent 60%),
     radial-gradient(70% 120% at 12% 100%, rgba(62,111,168,.14), transparent 60%),
     #ffffff;
   color: var(--ink); box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line-soft);
@@ -352,7 +353,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
    ============================================================ */
 .contact-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
 .contact-card { background: var(--white); border-radius: var(--r-md); padding: 28px; box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-soft); }
-.contact-card .ci { width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(135deg,rgba(62,111,168,.12),rgba(110,154,116,.12));color:var(--brand-blue);}
+.contact-card .ci { width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(135deg,rgba(62,111,168,.12),rgba(143,182,218,.12));color:var(--brand-blue);}
 .contact-card .ci svg{width:22px;height:22px;}
 .contact-card .lbl { font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-soft); font-weight:600; margin-bottom:6px; }
 .contact-card .val { font-size:1.15rem; font-weight:700; color:var(--ink); letter-spacing:-.01em; }
@@ -444,7 +445,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .page-hero { position: relative; padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 80px)); padding-bottom: clamp(28px, 4vw, 48px); overflow: hidden; }
 .page-hero::before {
   content:""; position:absolute; inset:0; z-index:-1;
-  background: radial-gradient(36% 70% at 94% -10%, rgba(110,154,116,.10), transparent 72%);
+  background: radial-gradient(36% 70% at 94% -10%, rgba(143,182,218,.10), transparent 72%);
   border-bottom: 1px solid var(--line-soft);
 }
 .page-hero .subnav { margin-bottom: 20px; }
@@ -485,7 +486,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .price-card .more { margin-top: 22px; }
 .price-card.feature {
   color: var(--text);
-  background: radial-gradient(70% 110% at 100% 0%, rgba(110,154,116,.14), transparent 60%), linear-gradient(150deg, #EAF2FB, #ffffff 72%);
+  background: radial-gradient(70% 110% at 100% 0%, rgba(143,182,218,.14), transparent 60%), linear-gradient(150deg, #EAF2FB, #ffffff 72%);
   box-shadow: var(--shadow-md), inset 0 0 0 2px var(--brand-blue-2);
 }
 .price-card.feature .plan, .price-card.feature .amount { color: var(--brand-deep); }
@@ -564,7 +565,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .form-card .btn { width: 100%; margin-top: 4px; }
 .form-note { font-size: .82rem; color: var(--text-soft); margin-top: 14px; text-align: center; line-height: 1.5; }
 .form-status { font-size: .95rem; font-weight: 600; margin-top: 14px; padding: 12px 16px; border-radius: var(--r-sm); display: none; }
-.form-status.ok { display:block; background: rgba(110,154,116,.14); color: #3f7a1f; }
+.form-status.ok { display:block; background: rgba(143,182,218,.14); color: #3f7a1f; }
 
 /* ============================================================
    RESPONSIVE
