@@ -72,8 +72,7 @@ def footer(prefix):
     <div class="footer-top">
       <div>
         <a class="brand" href="{prefix}index.html">
-          <img class="brand-mark" src="{prefix}assets/img/mark.png" alt="" width="66" height="48">
-          <span class="brand-word"><span class="brand-name">НОВАТЕЛ</span><span class="brand-tag">стабильная альтернатива</span></span>
+          <img class="brand-logo" src="{prefix}assets/img/logo.png" alt="НОВАТЕЛ — стабильная альтернатива" width="196" height="88">
         </a>
         <p class="footer-about">Телекоммуникационная компания. 29 лет помогаем клиентам — крупному и малому бизнесу, индивидуальным предпринимателям.</p>
       </div>
