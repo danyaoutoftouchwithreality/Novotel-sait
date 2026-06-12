@@ -345,10 +345,7 @@ def novosti_body():
 # ============================================================
 def home_body():
     return f'''<section class="hero hero--center">
-  <div class="hero-bg">
-    <canvas class="hero-globe" id="hero-globe" aria-hidden="true"></canvas>
-    <div class="hero-glow"></div>
-  </div>
+  <div class="hero-bg"><div class="hero-grid-lines"></div></div>
   <div class="container hero-inner">
     <h1 class="display" data-reveal>Стабильная <span class="grad">альтернатива</span> связи</h1>
     <p class="lead" data-reveal data-delay="2">29 лет помогаем клиентам. Номера 8-800, IP-телефония, виртуальные и многоканальные номера, телефонизация офисов, междугородная и международная связь — для крупного и малого бизнеса.</p>
@@ -365,7 +362,6 @@ def home_body():
     </div>
   </div>
 </section>
-<script src="assets/js/globe.js" defer></script>
 
 <section class="partners">
   <div class="container">

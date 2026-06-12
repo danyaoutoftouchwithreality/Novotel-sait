@@ -191,7 +191,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 @media (max-width:900px){ .hero-motif{ opacity:.15; right:-8%; top:auto; bottom:2%; } }
 
 /* Hero c глобусом (центрированный) */
-.hero--center { display:flex; align-items:center; text-align:center; min-height:min(90vh,780px); padding-top: calc(var(--nav-h) + clamp(24px,5vw,56px)); padding-bottom: clamp(40px,6vw,80px); }
+.hero--center { display:flex; align-items:center; text-align:center; min-height:min(72vh,600px); padding-top: calc(var(--nav-h) + clamp(28px,6vw,72px)); padding-bottom: clamp(48px,7vw,96px); }
 .hero--center .hero-bg { z-index:0; }
 .hero-globe { position:absolute; left:50%; top:47%; transform:translate(-50%,-50%); width:min(720px,82vw); height:min(720px,82vw); z-index:0; pointer-events:none; }
 @media (max-width:620px){ .hero-globe{ width:min(540px,96vw); height:min(540px,96vw); top:44%; } }
