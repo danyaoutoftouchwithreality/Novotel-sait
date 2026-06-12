@@ -318,6 +318,42 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 .news-item.alert { box-shadow: var(--shadow-sm), inset 0 0 0 1px rgba(176,106,60,.45); background: linear-gradient(150deg, rgba(176,106,60,.05), var(--white)); }
 .news-item.alert h2 { color: var(--brand-orange); }
 
+/* Карточка-новость как кнопка (открывает модалку) */
+button.news-card { text-align: left; width: 100%; cursor: pointer; font: inherit; -webkit-appearance: none; appearance: none; }
+.news-card template { display: none; }
+
+/* ============================================================
+   MODAL (новость поверх страницы)
+   ============================================================ */
+.modal { position: fixed; inset: 0; z-index: 200; display: none; }
+.modal.open { display: block; }
+body.modal-open { overflow: hidden; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(11,22,34,.55); }
+.modal-dialog {
+  position: relative; max-width: 760px; margin: 6vh auto; max-height: 88vh; overflow: hidden;
+  background: var(--white); border-radius: var(--r-xl); box-shadow: var(--shadow-lg);
+}
+.modal-content { overflow-y: auto; max-height: 88vh; padding: clamp(28px, 4vw, 52px); }
+.modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--slate-100); color: var(--ink); transition: background .2s, transform .2s;
+}
+.modal-close svg { width: 20px; height: 20px; }
+.modal-close:hover { background: var(--slate-200); transform: rotate(90deg); }
+.modal .m-date { font-family: var(--font-mono); font-size: .82rem; letter-spacing: .03em; color: var(--text-soft); }
+.modal h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.02em; margin: 12px 0 18px; padding-right: 40px; }
+.modal h2.alert-title { color: var(--brand-orange); }
+.modal .news-text p { color: var(--slate-700); font-size: 1.08rem; line-height: 1.74; }
+.modal .news-text > * + * { margin-top: 1.05em; }
+@media (prefers-reduced-motion: no-preference) {
+  .modal.open .modal-backdrop { animation: modal-fade .25s var(--ease); }
+  .modal.open .modal-dialog { animation: modal-pop .32s var(--ease); }
+  @keyframes modal-fade { from { opacity: 0; } }
+  @keyframes modal-pop { from { opacity: 0; transform: translateY(16px) scale(.985); } }
+}
+@media (max-width: 620px) { .modal-dialog { margin: 0; min-height: 100%; max-height: 100%; border-radius: 0; } }
+
 /* ============================================================
    SPLIT / WHY
    ============================================================ */

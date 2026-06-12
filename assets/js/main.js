@@ -49,6 +49,43 @@
     window.addEventListener("pageshow", () => document.documentElement.classList.remove("leaving"));
   }
 
+  // News modal — открытие новости поверх страницы, без перехода
+  var modal = document.getElementById("news-modal");
+  if (modal) {
+    var mContent = modal.querySelector(".modal-content");
+    var mClose = modal.querySelector(".modal-close");
+    var lastFocus = null;
+    var openModal = function (card) {
+      var tpl = card.querySelector("template.news-full");
+      if (!tpl) return;
+      mContent.innerHTML = "";
+      mContent.appendChild(tpl.content.cloneNode(true));
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      mContent.scrollTop = 0;
+      lastFocus = card;
+      mClose.focus();
+    };
+    var closeModal = function () {
+      if (!modal.classList.contains("open")) return;
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      mContent.innerHTML = "";
+      if (lastFocus) lastFocus.focus();
+    };
+    document.querySelectorAll("[data-news]").forEach(function (card) {
+      card.addEventListener("click", function () { openModal(card); });
+    });
+    modal.addEventListener("click", function (e) {
+      if (e.target.closest("[data-close]")) closeModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeModal();
+    });
+  }
+
   // Reveal on scroll
   const reveals = document.querySelectorAll("[data-reveal]");
   if (reduceMotion || !("IntersectionObserver" in window)) {

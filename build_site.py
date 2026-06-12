@@ -108,6 +108,16 @@ def footer(prefix):
   </div>
 </footer>
 
+<div class="modal" id="news-modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Новость">
+    <button class="modal-close" type="button" aria-label="Закрыть" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal-content"></div>
+  </div>
+</div>
+
 <script src="{prefix}assets/js/main.js"></script>
 </body>
 </html>
@@ -303,34 +313,28 @@ NEWS = [
 ]
 
 
-def home_news_card(n):
+def news_card(n):
+    """Карточка-новость, открывающая модальное окно (без перехода по странице)."""
     cls = "news-card alert" if n.get("alert") else "news-card"
-    return f'''      <a class="{cls}" href="novosti.html#news-{n['id']}" data-reveal>
+    body = n.get("body") or f"<p>{n['teaser']}</p>"
+    h2cls = ' class="alert-title"' if n.get("alert") else ''
+    return f'''      <button class="{cls}" type="button" data-news data-reveal>
         <div class="date">{n['date']}</div>
         <h4>{n['title']}</h4>
         <p>{n['teaser']}</p>
         <span class="more link-arrow">Читать {ARROW}</span>
-      </a>'''
-
-
-def news_item(n):
-    body = n.get("body") or f"<p>{n['teaser']}</p>"
-    cls = "news-item alert" if n.get("alert") else "news-item"
-    return f'''      <article class="{cls}" id="news-{n['id']}" data-reveal>
-        <span class="date">{n['date']}</span>
-        <h2>{n['title']}</h2>
-        <div class="news-text">{body}</div>
-      </article>'''
+        <template class="news-full"><span class="m-date">{n['date']}</span><h2{h2cls}>{n['title']}</h2><div class="news-text">{body}</div></template>
+      </button>'''
 
 
 def novosti_body():
-    items = "\n".join(news_item(n) for n in NEWS)
+    cards = "\n".join(news_card(n) for n in NEWS)
     return f'''{page_header("", "Новости", "Пресс-центр", "Новости компании", "Главные события и официальные сообщения ООО «НОВАТЕЛ» — о работе компании, изменениях в услугах и важных уведомлениях для клиентов.")}
 
 <section class="section" style="padding-top:24px">
   <div class="container">
-    <div class="news-list">
-{items}
+    <div class="news-grid">
+{cards}
     </div>
   </div>
 </section>'''
@@ -346,8 +350,7 @@ def home_body():
     <div class="hero-glow"></div>
   </div>
   <div class="container hero-inner">
-    <span class="pill" data-reveal><span class="dot"></span>Телекоммуникационная компания · с 1997 года</span>
-    <h1 class="display" data-reveal data-delay="1">Стабильная <span class="grad">альтернатива</span> связи</h1>
+    <h1 class="display" data-reveal>Стабильная <span class="grad">альтернатива</span> связи</h1>
     <p class="lead" data-reveal data-delay="2">29 лет помогаем клиентам. Номера 8-800, IP-телефония, виртуальные и многоканальные номера, телефонизация офисов, междугородная и международная связь — для крупного и малого бизнеса.</p>
     <div class="hero-actions" data-reveal data-delay="3">
       <a class="btn btn-primary btn-lg" href="vozmozhnosti.html">Смотреть возможности {ARROW}</a>
@@ -423,7 +426,7 @@ def home_body():
       <h2 class="h2" style="margin-top:16px">Главные новости</h2>
     </div>
     <div class="news-grid">
-{chr(10).join(home_news_card(n) for n in NEWS[:6])}
+{chr(10).join(news_card(n) for n in NEWS[:6])}
     </div>
     <div style="margin-top:32px" data-reveal><a class="btn btn-ghost btn-lg" href="novosti.html">Все новости {ARROW}</a></div>
   </div>
