@@ -170,6 +170,22 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
   white-space: nowrap; transition: background .2s, color .2s;
 }
 .nav-links a:hover { background: var(--slate-100); color: var(--ink); }
+/* Выпадающие меню навигации */
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-link .chev { width: 13px; height: 13px; margin-left: 4px; opacity: .55; transition: transform .22s var(--ease); }
+.nav-item:hover .chev, .nav-item:focus-within .chev { transform: rotate(180deg); }
+.nav-drop {
+  position: absolute; top: calc(100% + 2px); left: 0; min-width: 254px;
+  background: #fff; border-radius: 16px; box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line-soft);
+  padding: 8px; display: grid; gap: 2px; z-index: 60;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .22s var(--ease), transform .22s var(--ease), visibility .22s;
+}
+.nav-drop::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+.nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: none; }
+.nav-drop a { display: block; padding: 9px 13px; border-radius: 10px; font-size: .9rem; font-weight: 500; color: var(--slate-700); white-space: nowrap; }
+.nav-drop a:hover { background: var(--slate-100); color: var(--brand-blue); }
+#t-8800, #t-multi, #t-hosting { scroll-margin-top: calc(var(--nav-h) + 24px); }
 .nav-cta { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .nav-phone { font-family: var(--font-mono); font-weight: 600; color: var(--ink); font-size: .92rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .nav-phone span { display:block; font-family: var(--font); font-size:.66rem; font-weight:500; color: var(--text-soft); letter-spacing:.04em; }
@@ -647,6 +663,8 @@ body.modal-open { overflow: hidden; }
   .mobile-menu { position: fixed; inset: var(--nav-h) 0 auto 0; background: rgba(255,255,255,.97); backdrop-filter: blur(20px); z-index: 99; padding: 20px var(--gutter) 28px; box-shadow: var(--shadow-lg); transform: translateY(-110%); transition: transform .4s var(--ease); border-bottom: 1px solid var(--line); }
   .mobile-menu.open { transform: none; }
   .mobile-menu a { display:block; padding: 13px 4px; font-size: 1.05rem; font-weight: 600; border-bottom: 1px solid var(--line-soft); }
+  .mobile-menu .m-sub { padding: 10px 4px 10px 22px; font-size: .96rem; font-weight: 500; color: var(--text-soft); }
+  .mobile-menu .m-parent { color: var(--ink); }
   .mobile-menu .phones { margin-top: 16px; font-weight: 700; }
 }
 @media (min-width: 1001px) { .mobile-menu { display: none; } }

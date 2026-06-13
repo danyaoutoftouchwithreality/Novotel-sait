@@ -19,13 +19,13 @@
       <img class="brand-logo" src="assets/img/logo.png" alt="НОВАТЕЛ — стабильная альтернатива" width="196" height="88">
     </a>
     <nav class="nav-links" aria-label="Основная навигация">
-      <a href="index.html">Главная</a>
-      <a href="8800.html">Номера 8-800</a>
-      <a href="vozmozhnosti.html">Возможности</a>
-      <a href="tarify.html" class="active">Тарифы</a>
-      <a href="voprosy.html">Вопросы</a>
-      <a href="novosti.html">Новости</a>
-      <a href="kontakty.html">Контакты</a>
+      <a href="index.html" class="nav-link">Главная</a>
+      <a href="8800.html" class="nav-link">Номера 8-800</a>
+      <div class="nav-item"><a href="vozmozhnosti.html" class="nav-link">Возможности<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-drop"><a href="8800.html">Номер 8-800</a><a href="services/voip.html">IP-телефония</a><a href="services/virtual.html">Виртуальный и многоканальный номер</a><a href="services/long-distance.html">Междугородная и международная связь</a><a href="services/telephonization.html">Телефонизация офиса</a><a href="services/teleconference.html">Телеконференции</a><a href="services/hosting.html">Хостинг</a><a href="services/it-outsourcing.html">ИТ-аутсорсинг</a></div></div>
+      <div class="nav-item"><a href="tarify.html" class="nav-link active">Тарифы<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-drop"><a href="tarify.html#t-8800">Номер 8-800</a><a href="tarify.html#t-multi">Многоканальный телефон</a><a href="tarify.html#t-hosting">Хостинг</a><a href="tarify.html">Все тарифы</a></div></div>
+      <a href="voprosy.html" class="nav-link">Вопросы</a>
+      <a href="novosti.html" class="nav-link">Новости</a>
+      <a href="kontakty.html" class="nav-link">Контакты</a>
     </nav>
     <div class="nav-cta">
       <div class="nav-phone">8 (800) 775-12-87<span>звонок бесплатный</span></div>
@@ -35,13 +35,25 @@
   </div>
 </header>
 <div class="mobile-menu">
-  <a href="index.html">Главная</a>
-  <a href="8800.html">Номера 8-800</a>
-  <a href="vozmozhnosti.html">Возможности</a>
-  <a href="tarify.html" class="active">Тарифы</a>
-  <a href="voprosy.html">Вопросы</a>
-  <a href="novosti.html">Новости</a>
-  <a href="kontakty.html">Контакты</a>
+  <a href="index.html" class="">Главная</a>
+  <a href="8800.html" class="">Номера 8-800</a>
+  <a href="vozmozhnosti.html" class="m-parent">Возможности</a>
+  <a href="8800.html" class="m-sub">Номер 8-800</a>
+  <a href="services/voip.html" class="m-sub">IP-телефония</a>
+  <a href="services/virtual.html" class="m-sub">Виртуальный и многоканальный номер</a>
+  <a href="services/long-distance.html" class="m-sub">Междугородная и международная связь</a>
+  <a href="services/telephonization.html" class="m-sub">Телефонизация офиса</a>
+  <a href="services/teleconference.html" class="m-sub">Телеконференции</a>
+  <a href="services/hosting.html" class="m-sub">Хостинг</a>
+  <a href="services/it-outsourcing.html" class="m-sub">ИТ-аутсорсинг</a>
+  <a href="tarify.html" class="m-parent active">Тарифы</a>
+  <a href="tarify.html#t-8800" class="m-sub">Номер 8-800</a>
+  <a href="tarify.html#t-multi" class="m-sub">Многоканальный телефон</a>
+  <a href="tarify.html#t-hosting" class="m-sub">Хостинг</a>
+  <a href="tarify.html" class="m-sub">Все тарифы</a>
+  <a href="voprosy.html" class="">Вопросы</a>
+  <a href="novosti.html" class="">Новости</a>
+  <a href="kontakty.html" class="">Контакты</a>
   <div class="phones">8 (495) 775-12-87 · 8 (800) 775-12-87</div>
 </div>
 
@@ -58,7 +70,7 @@
 <section class="section" style="padding-top:24px">
   <div class="container">
     <div class="section-head" data-reveal>
-      <h2 class="h2">Номер 8-800</h2>
+      <h2 class="h2" id="t-8800">Номер 8-800</h2>
       <p class="lead">Подключение — 0 ₽. Ежемесячная плата за сам номер — 0 ₽. Ежемесячный платёж состоит из абонентской платы за номер 8-800 и гарантированного (минимального) платежа за звонки.</p>
     </div>
     <div class="price-grid">
@@ -101,7 +113,7 @@
 <section class="section" style="padding-top:0">
   <div class="container split">
     <div data-reveal>
-      <h2 class="h2">Многоканальный телефон</h2>
+      <h2 class="h2" id="t-multi">Многоканальный телефон</h2>
       <p class="lead" style="margin-top:16px">Городской номер, по которому одновременно может идти несколько телефонных разговоров. Типовые подключения — 2-х, 4-х, 8-ми, 16-ти и 32-х канальные номера.</p>
       <ul class="feature-list">
         <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>На оборудовании НОВАТЕЛ</h4><p>Платы за оборудование нет.</p></div></li>
@@ -124,7 +136,7 @@
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="section-head" data-reveal>
-      <h2 class="h2">Хостинг</h2>
+      <h2 class="h2" id="t-hosting">Хостинг</h2>
       <p class="lead">Цены указаны без учёта НДС. Оплата услуг производится минимум за 12 месяцев (в редких случаях возможна оплата за 6 месяцев).</p>
     </div>
     <div class="split" style="align-items:start">

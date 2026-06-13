@@ -6,14 +6,31 @@ import os
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 NAV = [
-    ("index.html", "Главная"),
-    ("8800.html", "Номера 8-800"),
-    ("vozmozhnosti.html", "Возможности"),
-    ("tarify.html", "Тарифы"),
-    ("voprosy.html", "Вопросы"),
-    ("novosti.html", "Новости"),
-    ("kontakty.html", "Контакты"),
+    ("index.html", "Главная", None),
+    ("8800.html", "Номера 8-800", None),
+    ("vozmozhnosti.html", "Возможности", [
+        ("8800.html", "Номер 8-800"),
+        ("services/voip.html", "IP-телефония"),
+        ("services/virtual.html", "Виртуальный и многоканальный номер"),
+        ("services/long-distance.html", "Междугородная и международная связь"),
+        ("services/telephonization.html", "Телефонизация офиса"),
+        ("services/teleconference.html", "Телеконференции"),
+        ("services/hosting.html", "Хостинг"),
+        ("services/it-outsourcing.html", "ИТ-аутсорсинг"),
+    ]),
+    ("tarify.html", "Тарифы", [
+        ("tarify.html#t-8800", "Номер 8-800"),
+        ("tarify.html#t-multi", "Многоканальный телефон"),
+        ("tarify.html#t-hosting", "Хостинг"),
+        ("tarify.html", "Все тарифы"),
+    ]),
+    ("voprosy.html", "Вопросы", None),
+    ("novosti.html", "Новости", None),
+    ("kontakty.html", "Контакты", None),
 ]
+
+CHEV = ('<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" '
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>')
 
 ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
          'stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>')
@@ -40,11 +57,18 @@ def head(prefix, title, desc):
 def nav(prefix, active):
     links = ""
     mobile = ""
-    for href, label in NAV:
-        cls = ' class="active"' if href == active else ''
-        links += f'\n      <a href="{prefix}{href}"{cls}>{label}</a>'
-        mcls = ' class="active"' if href == active else ''
-        mobile += f'\n  <a href="{prefix}{href}"{mcls}>{label}</a>'
+    for href, label, kids in NAV:
+        acls = " active" if href == active else ""
+        if kids:
+            sub = "".join(f'<a href="{prefix}{kh}">{kl}</a>' for kh, kl in kids)
+            links += (f'\n      <div class="nav-item">'
+                      f'<a href="{prefix}{href}" class="nav-link{acls}">{label}{CHEV}</a>'
+                      f'<div class="nav-drop">{sub}</div></div>')
+            mobile += f'\n  <a href="{prefix}{href}" class="m-parent{acls}">{label}</a>'
+            mobile += "".join(f'\n  <a href="{prefix}{kh}" class="m-sub">{kl}</a>' for kh, kl in kids)
+        else:
+            links += f'\n      <a href="{prefix}{href}" class="nav-link{acls}">{label}</a>'
+            mobile += f'\n  <a href="{prefix}{href}" class="{("active" if href == active else "")}">{label}</a>'
     return f'''
 <header class="nav">
   <div class="container">
@@ -499,7 +523,7 @@ def tarify_body():
 <section class="section" style="padding-top:24px">
   <div class="container">
     <div class="section-head" data-reveal>
-      <h2 class="h2">Номер 8-800</h2>
+      <h2 class="h2" id="t-8800">Номер 8-800</h2>
       <p class="lead">Подключение — 0 ₽. Ежемесячная плата за сам номер — 0 ₽. Ежемесячный платёж состоит из абонентской платы за номер 8-800 и гарантированного (минимального) платежа за звонки.</p>
     </div>
     <div class="price-grid">
@@ -542,7 +566,7 @@ def tarify_body():
 <section class="section" style="padding-top:0">
   <div class="container split">
     <div data-reveal>
-      <h2 class="h2">Многоканальный телефон</h2>
+      <h2 class="h2" id="t-multi">Многоканальный телефон</h2>
       <p class="lead" style="margin-top:16px">Городской номер, по которому одновременно может идти несколько телефонных разговоров. Типовые подключения — 2-х, 4-х, 8-ми, 16-ти и 32-х канальные номера.</p>
       <ul class="feature-list">
         <li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>На оборудовании НОВАТЕЛ</h4><p>Платы за оборудование нет.</p></div></li>
@@ -565,7 +589,7 @@ def tarify_body():
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="section-head" data-reveal>
-      <h2 class="h2">Хостинг</h2>
+      <h2 class="h2" id="t-hosting">Хостинг</h2>
       <p class="lead">Цены указаны без учёта НДС. Оплата услуг производится минимум за 12 месяцев (в редких случаях возможна оплата за 6 месяцев).</p>
     </div>
     <div class="split" style="align-items:start">
