@@ -345,7 +345,16 @@ def novosti_body():
 # ============================================================
 def home_body():
     return f'''<section class="hero hero--center">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <div class="hero-planet"></div>
+    <svg class="hero-orbits" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <ellipse cx="100" cy="100" rx="95" ry="33" transform="rotate(-20 100 100)" stroke="#3E6FA8" stroke-width="0.5" opacity="0.5"/>
+      <ellipse cx="100" cy="100" rx="90" ry="55" transform="rotate(18 100 100)" stroke="#3E6FA8" stroke-width="0.5" opacity="0.45"/>
+      <ellipse cx="100" cy="100" rx="72" ry="72" stroke="#6FA84E" stroke-width="0.45" opacity="0.45"/>
+      <circle cx="176" cy="84" r="2.4" fill="#1F4E8C"/><circle cx="34" cy="120" r="2.1" fill="#76C35F"/><circle cx="150" cy="158" r="1.9" fill="#1F4E8C"/>
+    </svg>
+    <div class="hero-glow"></div>
+  </div>
   <div class="container hero-inner">
     <h1 class="display" data-reveal>Стабильная <span class="grad">альтернатива</span> связи</h1>
     <p class="lead" data-reveal data-delay="2">29 лет помогаем клиентам. Номера 8-800, IP-телефония, виртуальные и многоканальные номера, телефонизация офисов, междугородная и международная связь — для крупного и малого бизнеса.</p>

@@ -193,10 +193,18 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; letter-spacin
 /* Hero c глобусом (центрированный) */
 .hero--center { display:flex; align-items:center; text-align:center; min-height:min(72vh,600px); padding-top: calc(var(--nav-h) + clamp(28px,6vw,72px)); padding-bottom: clamp(48px,7vw,96px); }
 .hero--center .hero-bg { z-index:0; }
-.hero-globe { position:absolute; left:50%; top:47%; transform:translate(-50%,-50%); width:min(720px,82vw); height:min(720px,82vw); z-index:0; pointer-events:none; }
-@media (max-width:620px){ .hero-globe{ width:min(540px,96vw); height:min(540px,96vw); top:44%; } }
+/* Планета из точек + орбиты (hero) */
+.hero-planet { position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); width:min(560px,86vw); aspect-ratio:1; border-radius:50%; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(circle, rgba(46,111,176,.5) 1.3px, transparent 1.5px) 0 0/15px 15px,
+    radial-gradient(circle at 40% 34%, rgba(174,206,236,.5), rgba(214,232,212,.28) 52%, rgba(143,182,218,.2) 100%);
+  box-shadow: inset 0 0 0 1px rgba(46,111,176,.2), inset 0 18px 50px rgba(255,255,255,.45), 0 24px 90px rgba(46,111,176,.14); }
+.hero-orbits { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(770px,118vw); aspect-ratio:1; z-index:0; pointer-events:none; animation: orbit-spin 90s linear infinite; transform-origin:center; }
+@keyframes orbit-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){ .hero-orbits{ animation:none; } }
+@media (max-width:620px){ .hero-planet{ top:50%; } .hero-orbits{ width:135vw; } }
 .hero-glow { position:absolute; inset:0; z-index:1; pointer-events:none;
-  background: radial-gradient(ellipse 60% 62% at 50% 47%, rgba(255,255,255,.94), rgba(255,255,255,.62) 42%, rgba(255,255,255,0) 74%); }
+  background: radial-gradient(ellipse 52% 42% at 50% 47%, rgba(255,255,255,.74), rgba(255,255,255,.28) 50%, rgba(255,255,255,0) 73%); }
 .hero--center .hero-inner { position:relative; z-index:2; max-width:840px; margin-inline:auto; }
 .hero--center .pill { margin-inline:auto; }
 .hero--center .lead { margin-inline:auto; }
