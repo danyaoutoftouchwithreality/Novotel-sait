@@ -145,6 +145,49 @@
     });
   }
 
+  // Magnetic buttons — крупные CTA мягко тянутся к курсору (только на устройствах с мышью)
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!reduceMotion && finePointer) {
+    const magnets = document.querySelectorAll(".btn-lg, .nav-cta .btn-primary");
+    const pull = 0.05;  // сила притяжения (едва заметная)
+    const cap = 4;      // максимальное смещение, px
+    const clamp = (v) => Math.max(-cap, Math.min(cap, v));
+    magnets.forEach((el) => {
+      let mx = 0, my = -2, pressed = false;
+      // inline-transform перекрывает CSS :hover/:active, поэтому собираем всё здесь
+      const apply = () => {
+        el.style.transform =
+          "translate(" + mx.toFixed(1) + "px, " + my.toFixed(1) + "px)" +
+          (pressed ? " scale(.94)" : "");
+      };
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        // считаем от ИСХОДНОГО центра (вычитаем уже применённый сдвиг) — иначе кнопка дёргается сама от себя
+        const cx = r.left + r.width / 2 - mx;
+        const cy = r.top + r.height / 2 - my;
+        mx = clamp((e.clientX - cx) * pull);
+        my = clamp((e.clientY - cy) * pull) - 2; // -2px — лёгкий подъём как на :hover
+        apply();
+      });
+      el.addEventListener("pointerdown", () => {
+        pressed = true;
+        el.style.transitionDuration = ".06s"; // вдавливание — мгновенное
+        apply();
+      });
+      const release = () => {
+        pressed = false;
+        el.style.transitionDuration = ""; // возврат — плавный
+        apply();
+      };
+      el.addEventListener("pointerup", release);
+      el.addEventListener("pointerleave", () => {
+        mx = 0; my = 0; pressed = false;
+        el.style.transitionDuration = "";
+        el.style.transform = "";
+      });
+    });
+  }
+
   // Count-up for stats
   const counters = document.querySelectorAll("[data-count]");
   if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
