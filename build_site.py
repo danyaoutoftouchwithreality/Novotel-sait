@@ -62,7 +62,7 @@ def nav(prefix, active):
         if kids:
             sub = "".join(f'<a href="{prefix}{kh}">{kl}</a>' for kh, kl in kids)
             links += (f'\n      <div class="nav-item">'
-                      f'<a href="{prefix}{href}" class="nav-link{acls}">{label}{CHEV}</a>'
+                      f'<a href="{prefix}{href}" class="nav-link{acls}">{label}</a>'
                       f'<div class="nav-drop">{sub}</div></div>')
             mobile += f'\n  <a href="{prefix}{href}" class="m-parent{acls}">{label}</a>'
             mobile += "".join(f'\n  <a href="{prefix}{kh}" class="m-sub">{kl}</a>' for kh, kl in kids)
